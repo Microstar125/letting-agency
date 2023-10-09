@@ -7,8 +7,8 @@ import FeatImage04 from "@/public/images/work4.jpeg";
 
 export default function Zigzag() {
   return (
-    <section>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 bg-white">
+    <section className="bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="py-12 md:py-20">
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
