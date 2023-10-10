@@ -62,15 +62,15 @@ export default function Hero() {
               <div data-aos="fade-up" data-aos-delay="400">
                 <a
                   className="btn text-white bg-blue hover:bg-bluehover w-full mb-4 sm:w-auto sm:mb-0"
-                  href="#0"
+                  href="#contact"
                 >
-                  Start free trial
+                  Contact Us
                 </a>
               </div>
               <div data-aos="fade-up" data-aos-delay="600">
                 <a
                   className="btn text-white bg-darkblue hover:bg-darkbluehover w-full sm:w-auto sm:ml-4"
-                  href="#0"
+                  href="#features"
                 >
                   Learn more
                 </a>
