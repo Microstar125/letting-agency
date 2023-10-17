@@ -1,4 +1,32 @@
+"use client";
+
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+
 export default function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [type, setType] = useState("");
+  const [message, setMessage] = useState("");
+
+  var templateParams = {
+    name: {name},
+    email: {email},
+    type: {type},
+    message: {message},
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_m4h43xn', 'template_nnobczx', '#form', 'y74wiXcLOnrL-pzTn')
+    .then(function(response) {
+       console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+       console.log('FAILED...', error);
+    });
+  };
+
   return (
     <section id="contact" className="bg-bgalt">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -11,7 +39,11 @@ export default function Contact() {
               any longer. Contact us today and let us take care of everything
               for you. You can either fill out the form below or give us a call.
             </p>
-            <form action="#" className="space-y-8 p-10 mt-10 bg-white">
+            <form
+              onSubmit={handleSubmit}
+              id="form"
+              className="space-y-8 p-10 mt-10 bg-white"
+            >
               <div>
                 <label className="block mb-2 text-sm font-medium text-xl text-darkblue">
                   I'm interested in...
@@ -22,8 +54,11 @@ export default function Contact() {
                       <input
                         type="radio"
                         id="letting"
-                        name="letting"
-                        value="letting"
+                        name="type"
+                        value={type}
+                        onChange={(e) => {
+                          setType("Letting");
+                        }}
                         className="hidden peer"
                         required
                       />
@@ -40,8 +75,11 @@ export default function Contact() {
                       <input
                         type="radio"
                         id="renting"
-                        name="renting"
-                        value="renting"
+                        name="type"
+                        value={type}
+                        onChange={(e) => {
+                          setType("Renting");
+                        }}
                         className="hidden peer"
                       />
                       <label
@@ -59,7 +97,11 @@ export default function Contact() {
               <div>
                 <input
                   type="text"
-                  id="name"
+                  name="name"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
                   className="block p-3 w-full text-sm text-gray-900 border-x-0 border-t-0 border-b-4 border-slate-300 shadow-sm focus:ring-primary-500 focus:border-primary-500"
                   placeholder="Your Name"
                   required
@@ -68,7 +110,11 @@ export default function Contact() {
               <div>
                 <input
                   type="email"
-                  id="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                   className="block p-3 w-full text-sm text-gray-900 border-x-0 border-t-0 border-b-4 border-slate-300 shadow-sm focus:ring-primary-500 focus:border-primary-500"
                   placeholder="Your email"
                   required
@@ -77,7 +123,11 @@ export default function Contact() {
 
               <div className="sm:col-span-2">
                 <textarea
-                  id="message"
+                  name="message"
+                  value={message}
+                  onChange={(e) => {
+                    setMessage(e.target.value);
+                  }}
                   rows={4}
                   className="block p-3 w-full text-sm text-gray-900 border-x-0 border-t-0 border-b-4 border-slate-300 shadow-sm focus:ring-primary-500 focus:border-primary-500"
                   placeholder="Your message"
