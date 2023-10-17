@@ -36,7 +36,14 @@ export default function Contact() {
       );
   };
 
-  const Mailto = ({ mailTo, subject = "", body = "", children }) => {
+  type MailProps = {
+    mailTo: string
+    children: string
+    subject: string
+    body: string
+  };
+
+  const Mailto: React.FunctionComponent<MailProps> = ({ mailTo, subject = "", body = "", children }) => {
     let params = subject || body ? "?" : "";
     if (subject) params += `subject=${encodeURIComponent(subject)}`;
     if (body) params += `${subject ? "&" : ""}body=${encodeURIComponent(body)}`;
