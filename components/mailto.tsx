@@ -36,14 +36,6 @@ export default function Contact() {
       );
   };
 
-  const Mailto = ({ mailTo, subject = "", body = "", children }) => {
-    let params = subject || body ? "?" : "";
-    if (subject) params += `subject=${encodeURIComponent(subject)}`;
-    if (body) params += `${subject ? "&" : ""}body=${encodeURIComponent(body)}`;
-
-    return <a className="text-lg text-darkblue text-center" href={`mailto:${mailTo}${params}`}>{children}</a>;
-  };
-
   return (
     <section id="contact" className="bg-bgalt">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -79,13 +71,9 @@ export default function Contact() {
                     fill="#501DFF"
                   />
                 </svg>
-                <Mailto
-                  mailTo="hello@rentix.co.uk"
-                  subject="New Letting/Rental enquiry"
-                  body="Hello, I'm reaching out about a new letting/rental service"
-                >
+                <p className="text-lg text-darkblue text-center">
                   hello@rentix.co.uk
-                </Mailto>
+                </p>
               </div>
 
               {/* phone */}
@@ -107,9 +95,9 @@ export default function Contact() {
                     fill="#501DFF"
                   />
                 </svg>
-                <a href="tel:+123456789" className="text-lg text-darkblue text-center">
+                <p className="text-lg text-darkblue text-center">
                   +123 456 789
-                </a>
+                </p>
               </div>
             </div>
             <form
